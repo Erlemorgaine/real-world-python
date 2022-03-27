@@ -33,9 +33,9 @@ contents = sorted(os.listdir())
 for image in contents:
     print(f"Motion detected at {datetime.now()}")
     discharge_weapon = True
-    # engine.say("You have entered an active fire zone. \
-    #     Face the machine! \
-    #     You have 5 seconds.")
+    engine.say("You have entered an active fire zone. \
+        Face the machine! \
+        You have 5 seconds.")
 
     # This halts program execution, flushes say() queue and plays the audio
     engine.runAndWait()
@@ -91,6 +91,7 @@ for image in contents:
     if discharge_weapon == True:
         cv.putText(img_gray, 'FIRE!', (int(width / 2) - 20, int(height / 2)), cv.FONT_HERSHEY_PLAIN, 3, 255, 3)
 
+    # Because of the bug with imshow and mac, we save the images instead of showing them
     cv.imwrite('PROCESSED_' + image, img_gray)
 
 # The book continues to show 'Fire' on the image when discharge_weapon is True and play the safe-sound if its False
