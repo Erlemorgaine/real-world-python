@@ -35,7 +35,7 @@ for index, image in enumerate(image_paths):
             name = names[predicted_id]
             print("{} identified as {} with distance={}\n".format(image, name, round(dist, 1)))
         else:
-            name = 'unnknown'
+            name = 'unknown'
             print(f"{image} is {name}")
 
         cv.rectangle(predict_image, (x, y), (x + w, y + h), 255, 2)
