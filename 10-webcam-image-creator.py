@@ -40,9 +40,13 @@ name = input("\nEnter last name: \n")
 user_id = input("\nEnter user ID: \n")
 print("\nCapturing face, look at the camera!")
 
-if not os.path.isdir('trainer'):
-    os.mkdir('trainer')
-os.chdir('trainer')
+# if not os.path.isdir('trainer'):
+#     os.mkdir('trainer')
+# os.chdir('trainer')
+
+if not os.path.isdir('tester'):
+    os.mkdir('tester')
+os.chdir('tester')
 
 frame_count = 0
 
@@ -57,7 +61,7 @@ while True:
         frame_count += 1
         # We only save the portion with in the face rectangle, to make sure that 
         # no background features are gonna influence the learning
-        cv.imwrite(str(name) + '.' + str(user_id) + '.' + str(frame_count) + '.jpg', gray[x:x+w, y:y+h])
+        cv.imwrite(str(name) + '.' + str(user_id) + '.' + str(frame_count) + '.jpg', img_gray[y:y+h, x:x+w])
         cv.waitKey(400)
     if frame_count >= 30:
         break
